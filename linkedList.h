@@ -85,7 +85,7 @@ template <class Type>
 linkedListIterator<Type> linkedListIterator<Type>::
                                   operator++()   
 {
-    current = current->link;
+    current = current->next;
 
     return *this;
 }
@@ -267,7 +267,7 @@ void linkedListType<Type>::print() const
                         //the head node
     while (current != nullptr) //while more data to print
     {
-        cout << *(current->data) << " ";
+        cout << current->data << " ";
         current = current->next;
     }
 }//end print

@@ -68,9 +68,9 @@ bool unorderedLinkedList<Type>::
 template <class Type>
 void unorderedLinkedList<Type>::insertFirst(Type* newItem)
 {
-    nodeType<Type> *newNode; //pointer to create the new node
+    nodeType<Type> *newNode = new nodeType<Type>(); //pointer to create the new node
 
-    newNode = new nodeType<Type>(); //create the new node
+     //create the new node
 
     newNode->data = *newItem;    //store the new item in the node
     newNode->next = head;      //insert newNode before first
@@ -86,13 +86,13 @@ void unorderedLinkedList<Type>::insertFirst(Type* newItem)
 template <class Type>
 void unorderedLinkedList<Type>::insertLast(Type* newItem)
 {
-    nodeType<Type> *newNode; //pointer to create the new node
+    nodeType<Type> *newNode = new nodeType<Type>(); //pointer to create the new node
 
     newNode = new nodeType<Type>; //create the new node
 
-    newNode->data = newItem;  //store the new item in the node
+    newNode->data = *newItem;  //store the new item in the node
    cout << "newItem = " << *newItem << endl;
-	cout << "Succesfully set newNode value to " << *(newNode->data) << endl;
+	cout << "Succesfully set newNode value to " << newNode->data << endl;
 
  newNode->next = nullptr;     //set the next field of newNode
                               //to nullptr
@@ -128,7 +128,7 @@ void unorderedLinkedList<Type>::deleteNode(const Type& deleteItem)
     else
     {
 		  cout << "Trying to delete...." << deleteItem << endl;
-        if (*(head->data) == deleteItem) //Case 2 
+        if ((head->data) == deleteItem) //Case 2 
         {
             current = head;
             head = head->next;
@@ -145,9 +145,9 @@ void unorderedLinkedList<Type>::deleteNode(const Type& deleteItem)
             current = head->next; //set current to point to 
                                    //the second node
 
-            while (current != nullptr && !found)
+            while (current != nullptr && current->data != deleteItem)
             {
-                if (*(current->data) != deleteItem) 
+                if ((current->data) != deleteItem )
                 {
                     trailCurrent = current;
                     current = current-> next;
